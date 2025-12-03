@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -29,7 +29,8 @@
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
                         'cursor-blink': 'blink 1s step-end infinite',
-                        'scroll': 'scroll 25s linear infinite',
+                        'scroll': 'scroll 40s linear infinite', 
+                        'gradient-x': 'gradient-x 3s ease infinite',
                     },
                     keyframes: {
                         float: {
@@ -42,8 +43,18 @@
                         },
                         scroll: {
                             '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-50%)' }, // Changed to -50% for seamless loop with duplicated content
-                        }
+                            '100%': { transform: 'translateX(-50%)' }, 
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
                     }
                 }
             }
@@ -95,7 +106,6 @@
         }
 
         .text-glow {
-            /* Subtle green glow for light mode */
             text-shadow: 0 0 30px rgba(20, 83, 45, 0.25);
         }
 
@@ -163,27 +173,68 @@
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-3">
-                    <!-- Logo Mark -->
-                    <div class="w-8 h-8 bg-primary rounded flex items-center justify-center shadow-sm">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <!-- Atomic Shield Logo -->
+                    <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/20">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22C16.97 21.5 20 16.97 20 12V6L12 2L4 6V12C4 16.97 7.03 21.5 12 22Z" fill="#14532d"/>
+                            <ellipse cx="12" cy="11.5" rx="5.5" ry="2" transform="rotate(45 12 11.5)" stroke="white" stroke-width="1" stroke-opacity="0.8"/>
+                            <ellipse cx="12" cy="11.5" rx="5.5" ry="2" transform="rotate(-45 12 11.5)" stroke="white" stroke-width="1" stroke-opacity="0.8"/>
+                            <ellipse cx="12" cy="11.5" rx="5.5" ry="2" stroke="white" stroke-width="1" stroke-opacity="0.8"/>
+                            <circle cx="12" cy="11.5" r="1.5" fill="#b45309"/>
+                        </svg>
                     </div>
-                    <span class="text-lg font-bold tracking-tight text-slate-900">DACN <span class="font-normal text-slate-500">AirGuard</span></span>
+                    <span class="text-xl font-bold tracking-tight">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">DACN</span> 
+                        <span class="font-normal text-slate-500">AirGuard</span>
+                    </span>
                 </div>
+                
+                <!-- Desktop Menu -->
                 <div class="hidden md:block">
-                    <div class="flex items-baseline space-x-8 font-mono text-xs text-slate-600 tracking-wide uppercase font-medium">
-                        <a href="#solutions" class="hover:text-primary transition-colors">[ Solutions ]</a>
-                        <a href="#intelligence" class="hover:text-primary transition-colors text-accent">[ Intelligence ]</a>
-                        <a href="#tech" class="hover:text-primary transition-colors">[ Technology ]</a>
-                        <a href="#chains" class="hover:text-primary transition-colors">[ Networks ]</a>
-                        <a href="#" class="px-4 py-2 border border-slate-300 rounded text-slate-700 hover:border-primary hover:text-primary transition-all bg-white">Client Login_</a>
+                    <div class="flex items-center space-x-12 font-sans text-sm text-slate-600 font-medium">
+                        <!-- Simplified Navigation -->
+                        <a href="#" class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Home</a>
+                        
+                        <!-- Updated Get Started Button with Showover Effect -->
+                        <a href="#" class="group relative px-6 py-2.5 border border-slate-300 rounded text-slate-700 hover:bg-primary hover:border-primary hover:text-white transition-all bg-white overflow-hidden min-w-[160px] text-center flex justify-center items-center shadow-sm">
+                            <span class="absolute flex items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-2 font-medium w-full h-full">
+                                Get Started
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </span>
+                            <span class="absolute flex items-center justify-center transition-all duration-300 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 font-bold text-[10px] tracking-widest uppercase w-full h-full">
+                                COMING SOON
+                            </span>
+                            <!-- Spacer to maintain width -->
+                            <span class="invisible flex items-center justify-center">
+                                Get Started
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </span>
+                        </a>
                     </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
                 </div>
             </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white/95 backdrop-blur-xl border-b border-slate-200 p-6 flex flex-col gap-6 shadow-xl z-40">
+            <a href="#" class="text-lg font-bold text-primary">Home</a>
+            <a href="#solutions" class="text-lg text-slate-600">Solutions</a>
+            <a href="#tech" class="text-lg text-slate-600">Technology</a>
+            <a href="#" class="w-full text-center px-6 py-3 border border-primary text-primary font-bold rounded-lg bg-primary/5 flex items-center justify-center gap-2">
+                Get Started <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg> (Coming Soon)
+            </a>
         </div>
     </nav>
 
     <!-- SECTION 1: HERO -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section class="relative pt-28 md:pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <!-- Text Content -->
@@ -193,8 +244,8 @@
                         SYSTEM STATUS: OPERATIONAL // FIPS 140-3
                     </div>
                     <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-[1.05] text-slate-900 mb-6">
-                        Post-Quantum <br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary text-glow">Sovereign Custody</span>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Post-Quantum</span> <br>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Sovereign Custody</span>
                         <span class="block text-3xl md:text-5xl text-slate-400 mt-2 font-light tracking-normal">for Institutions</span>
                     </h1>
                     <p class="mt-6 text-lg text-slate-600 max-w-lg border-l-2 border-slate-300 pl-6 leading-relaxed">
@@ -202,82 +253,89 @@
                     </p>
                     
                     <div class="mt-10 flex flex-col sm:flex-row gap-4">
-                        <button class="group relative h-14 px-8 overflow-hidden rounded bg-primary text-white shadow-xl shadow-primary/20 transition-all hover:bg-secondary data-reveal" 
-                                data-content="INIT_KEY_CEREMONY()">
-                            <span class="relative flex items-center font-semibold tracking-wide">
-                                Book a Demo
+                        <button class="group relative h-14 px-8 overflow-hidden rounded bg-primary text-white shadow-xl shadow-primary/20 transition-all hover:bg-secondary w-full sm:w-auto">
+                            <span class="absolute inset-0 flex items-center justify-center transition-all duration-300 group-hover:opacity-0 group-hover:-translate-y-2 font-semibold tracking-wide w-full h-full">
+                                Try our sandbox
+                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </span>
+                            <span class="absolute inset-0 flex items-center justify-center transition-all duration-300 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 font-bold text-xs tracking-widest w-full h-full">
+                                COMING SOON
+                            </span>
+                            <span class="opacity-0 flex items-center font-semibold tracking-wide pointer-events-none">
+                                Try our sandbox
                                 <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </span>
                         </button>
                         
-                        <button class="h-14 px-8 rounded border border-slate-300 bg-white text-slate-700 hover:border-primary hover:text-primary transition-all flex items-center justify-center font-mono text-sm font-medium shadow-sm">
-                            <svg class="mr-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                            Download Evidence Pack
+                        <button class="h-14 px-8 rounded border border-slate-300 bg-white text-slate-700 hover:border-primary hover:text-primary transition-all flex items-center justify-center font-mono text-sm font-medium shadow-sm w-full sm:w-auto">
+                            <svg class="mr-3 w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M10.548 20.317l-5.023 2.511-.005-9.336 4.97-2.485a.75.75 0 0 1 1.116.671v8.639zm12.904-2.511l-5.023-2.511v-8.64a.75.75 0 0 1 1.116-.67l4.97 2.485-.005 9.336zM12 4.3l9.535-4.223a.75.75 0 0 1 1.07.67l.005 10.607a.75.75 0 0 1-.415.67l-10.2 5.1a.75.75 0 0 1-.67 0l-10.2-5.1a.75.75 0 0 1-.415-.67l.005-10.607a.75.75 0 0 1 1.07-.67L11.33 4.298a.75.75 0 0 1 .67 0z"/></svg>
+                            Read our Whitepaper
                         </button>
                     </div>
                 </div>
 
-                <!-- Hero Visual: The Key Shard -->
-                <div class="relative h-[400px] w-full flex items-center justify-center perspective-1000 reveal-on-scroll delay-200">
-                    <!-- This represents the Air-Gapped Key Container -->
+                <!-- Hero Visual -->
+                <div class="relative h-[300px] md:h-[400px] w-full flex items-center justify-center perspective-1000 reveal-on-scroll delay-200 mt-12 lg:mt-0">
                     <div class="relative w-64 h-64 animate-float">
-                        <!-- Outer Shield -->
                         <div class="absolute inset-0 border border-slate-300 rounded-xl transform rotate-3 bg-white/10 backdrop-blur-sm"></div>
                         <div class="absolute inset-0 border border-slate-200 rounded-xl transform -rotate-3"></div>
-                        
-                        <!-- Core Cube -->
                         <div class="absolute inset-4 glass-panel rounded-lg flex items-center justify-center overflow-hidden border border-primary/20 shadow-2xl shadow-primary/10">
-                            <!-- Geometric Encryption Visual -->
                             <div class="w-full h-full relative">
                                 <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjRjFGNUY5Ii8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwNjRFM0IiLz4KPC9zdmc+')] opacity-30"></div>
                                 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-primary/30 rounded-full flex items-center justify-center animate-pulse-slow">
                                     <div class="w-24 h-24 border border-accent/30 rounded-full flex items-center justify-center bg-white/50 backdrop-blur-sm">
                                         <div class="font-mono text-[10px] text-primary text-center leading-none font-bold">
-                                            0x9f...3a<br>
-                                            SECURE<br>
-                                            ENCLAVE
+                                            0x9f...3a<br>SECURE<br>ENCLAVE
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Scanning Line -->
                                 <div class="absolute top-0 left-0 w-full h-1 bg-primary/30 shadow-[0_0_15px_rgba(20,83,45,0.3)] animate-[scan_3s_linear_infinite]"></div>
                             </div>
                         </div>
-                        
-                        <!-- Floating Labels -->
-                        <div class="absolute -right-12 top-10 bg-white/90 backdrop-blur border border-slate-200 shadow-lg rounded px-3 py-1 text-[10px] font-mono text-accent font-bold tracking-wide">
-                            QUANTUM_RESISTANT
-                        </div>
-                        <div class="absolute -left-8 bottom-10 bg-white/90 backdrop-blur border border-slate-200 shadow-lg rounded px-3 py-1 text-[10px] font-mono text-primary font-bold tracking-wide">
-                            AIR_GAPPED
-                        </div>
+                        <div class="absolute -right-12 top-10 bg-white/90 backdrop-blur border border-slate-200 shadow-lg rounded px-3 py-1 text-[10px] font-mono text-accent font-bold tracking-wide z-10">QUANTUM_RESISTANT</div>
+                        <div class="absolute -left-10 top-4 bg-white/90 backdrop-blur border border-slate-200 shadow-lg rounded px-3 py-1 text-[10px] font-mono text-primary font-bold tracking-wide z-10">ZK_BASED</div>
+                        <div class="absolute -left-8 bottom-10 bg-white/90 backdrop-blur border border-slate-200 shadow-lg rounded px-3 py-1 text-[10px] font-mono text-primary font-bold tracking-wide z-10">AIR_GAPPED</div>
+                        <div class="absolute -right-6 bottom-4 bg-white/90 backdrop-blur border border-slate-200 shadow-lg rounded px-3 py-1 text-[10px] font-mono text-accent font-bold tracking-wide z-10">TRUSTLESS</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2: TRUST BAR -->
+    <!-- SECTION 2: TARGET SECTORS -->
     <section class="border-y border-slate-200 bg-white">
-        <div class="max-w-[1600px] mx-auto px-4 py-12 reveal-on-scroll">
-            <p class="text-center text-xs font-mono text-slate-400 tracking-widest uppercase mb-8 font-medium">Trusted by US Government Agencies and Tier-1 Banks</p>
-            <div class="flex flex-wrap justify-center gap-12 md:gap-20 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                <!-- Mock Logos (Dark Text for Light Mode) -->
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 bg-slate-800 rounded-sm"></div>
-                    <span class="font-serif text-xl text-slate-800 font-bold">APEX BANK</span>
+        <div class="max-w-[1600px] mx-auto px-4 py-16 reveal-on-scroll">
+            <p class="text-center text-xs font-mono text-slate-400 tracking-widest uppercase mb-12 font-bold">
+                Providing Safe Digital Asset Custody For
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+                <!-- Governments -->
+                <div class="flex flex-col items-center justify-center gap-4 group cursor-default">
+                    <div class="w-16 h-16 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-primary group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
+                    </div>
+                    <span class="font-sans font-bold text-slate-700 tracking-tight group-hover:text-primary transition-colors">Governments</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 border-2 border-slate-800 rounded-full"></div>
-                    <span class="font-sans text-xl text-slate-800 tracking-tighter font-bold">SovereignTrust</span>
+                <!-- Banks -->
+                <div class="flex flex-col items-center justify-center gap-4 group cursor-default">
+                    <div class="w-16 h-16 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-primary group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <span class="font-sans font-bold text-slate-700 tracking-tight group-hover:text-primary transition-colors">Banks</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 bg-slate-800 transform rotate-45"></div>
-                    <span class="font-mono text-xl text-slate-800 font-bold">BLOCK_FED</span>
+                <!-- Family Offices -->
+                <div class="flex flex-col items-center justify-center gap-4 group cursor-default">
+                    <div class="w-16 h-16 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-primary group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <span class="font-sans font-bold text-slate-700 tracking-tight group-hover:text-primary transition-colors">Family Offices</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 border border-slate-800"></div>
-                    <span class="font-serif text-xl text-slate-800 font-bold">NY Custody</span>
+                <!-- Fintech Corps -->
+                <div class="flex flex-col items-center justify-center gap-4 group cursor-default">
+                    <div class="w-16 h-16 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-primary group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>
+                    </div>
+                    <span class="font-sans font-bold text-slate-700 tracking-tight group-hover:text-primary transition-colors">Fintech Corps</span>
                 </div>
             </div>
         </div>
@@ -287,7 +345,9 @@
     <section id="solutions" class="py-24 relative">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 reveal-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">The <span class="text-accent">Post-Quantum</span> Challenge</h2>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">The Post-Quantum Challenge</span>
+                </h2>
                 <p class="mt-4 text-slate-600 max-w-2xl text-lg leading-relaxed">The threat of "Harvest-Now-Decrypt-Later" (HNDL) renders standard RSA/ECC encryption obsolete. US Institutions must migrate to lattice-based cryptography immediately.</p>
             </div>
 
@@ -299,25 +359,12 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-6">Legacy Custody</h3>
                     <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <span class="mr-3 text-warning font-mono font-bold">x</span>
-                            <span class="text-slate-600 font-medium">Hot Wallet Exposure</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="mr-3 text-warning font-mono font-bold">x</span>
-                            <span class="text-slate-600 font-medium">Single Point of Failure</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="mr-3 text-warning font-mono font-bold">x</span>
-                            <span class="text-slate-600 font-medium"><span class="text-accent">Quantum Vulnerable</span> (Shor's Algorithm)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="mr-3 text-warning font-mono font-bold">x</span>
-                            <span class="text-slate-600 font-medium">Cloud Inference Dependency</span>
-                        </li>
+                        <li class="flex items-start"><span class="mr-3 text-warning font-mono font-bold">x</span><span class="text-slate-600 font-medium">Hot Wallet Exposure</span></li>
+                        <li class="flex items-start"><span class="mr-3 text-warning font-mono font-bold">x</span><span class="text-slate-600 font-medium">Single Point of Failure</span></li>
+                        <li class="flex items-start"><span class="mr-3 text-warning font-mono font-bold">x</span><span class="text-slate-600 font-medium"><span class="text-accent">Quantum Vulnerable</span> (Shor's Algorithm)</span></li>
+                        <li class="flex items-start"><span class="mr-3 text-warning font-mono font-bold">x</span><span class="text-slate-600 font-medium">Cloud Inference Dependency</span></li>
                     </ul>
                 </div>
-
                 <!-- DACN Card -->
                 <div class="glass-panel p-8 rounded-xl border-l-4 border-l-primary relative overflow-hidden group reveal-on-scroll delay-200 hover:shadow-xl transition-all duration-500 bg-white">
                     <div class="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
@@ -325,22 +372,10 @@
                     </div>
                     <h3 class="text-xl font-bold text-slate-900 mb-6">DACN AirGuard</h3>
                     <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <span class="mr-3 text-primary font-mono font-bold">✓</span>
-                            <span class="text-slate-600 font-medium">Offline Key Generation (Air-Gapped)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="mr-3 text-primary font-mono font-bold">✓</span>
-                            <span class="text-slate-600 font-medium">Multi-Shard Governance (MPC)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="mr-3 text-primary font-mono font-bold">✓</span>
-                            <span class="text-slate-600 font-medium">NIST FIPS 203/204/205 Aligned</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="mr-3 text-primary font-mono font-bold">✓</span>
-                            <span class="text-slate-600 font-medium">Self-Hosted Model (Local Inference)</span>
-                        </li>
+                        <li class="flex items-start"><span class="mr-3 text-primary font-mono font-bold">✓</span><span class="text-slate-600 font-medium">Offline Key Generation (Air-Gapped)</span></li>
+                        <li class="flex items-start"><span class="mr-3 text-primary font-mono font-bold">✓</span><span class="text-slate-600 font-medium">Multi-Shard Governance (MPC)</span></li>
+                        <li class="flex items-start"><span class="mr-3 text-primary font-mono font-bold">✓</span><span class="text-slate-600 font-medium">NIST FIPS 203/204/205 Aligned</span></li>
+                        <li class="flex items-start"><span class="mr-3 text-primary font-mono font-bold">✓</span><span class="text-slate-600 font-medium">ZK Based and Quantum Resistant</span></li>
                     </ul>
                 </div>
             </div>
@@ -349,66 +384,50 @@
 
     <!-- SECTION: GEMINI SENTIENT OPERATIONS -->
     <section id="intelligence" class="py-24 bg-white border-y border-slate-200 relative overflow-hidden">
-        <!-- Decorative Background -->
         <div class="absolute inset-0 opacity-30 pointer-events-none">
             <div class="absolute top-0 left-1/4 w-px h-full bg-slate-200"></div>
             <div class="absolute top-0 right-1/4 w-px h-full bg-slate-200"></div>
             <div class="absolute top-1/3 w-full h-px bg-slate-200"></div>
         </div>
-
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal-on-scroll">
                 <div>
                     <div class="inline-flex items-center gap-2 text-accent font-mono text-xs mb-2 font-bold">
                         <svg class="w-3 h-3 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
-                        POWERED BY GEMINI 2.5
+                        POWERED BY DACN
                     </div>
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">Sentient <span class="text-primary">Operations</span></h2>
                     <p class="mt-2 text-slate-500 max-w-lg">Real-time threat modeling and regulatory compliance auditing powered by sovereign AI intelligence.</p>
                 </div>
             </div>
-
             <div class="grid lg:grid-cols-5 gap-8">
-                <!-- Control Panel -->
                 <div class="lg:col-span-2 space-y-6 reveal-on-scroll delay-100">
-                    <!-- Tab Switcher -->
                     <div class="flex gap-1 bg-slate-100 p-1 rounded-lg border border-slate-200">
                         <button onclick="setMode('risk')" id="btn-risk" class="flex-1 py-2 px-4 text-sm font-mono rounded-md bg-white text-slate-900 shadow-sm border border-slate-200 transition-all font-semibold">RISK_ENGINE</button>
                         <button onclick="setMode('compliance')" id="btn-compliance" class="flex-1 py-2 px-4 text-sm font-mono rounded-md text-slate-500 hover:text-slate-900 hover:bg-white/50 transition-all font-semibold">REGULATORY_ORACLE</button>
                     </div>
-
-                    <!-- Input Area -->
                     <div class="glass-panel p-6 rounded-xl border border-slate-200 bg-white/50">
                         <label id="input-label" class="block text-xs font-mono text-primary mb-2 uppercase tracking-wider font-bold">Scenario / Vector Input</label>
                         <textarea id="gemini-input" rows="4" class="w-full bg-white border border-slate-200 rounded-md p-3 text-slate-900 font-sans text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder-slate-400 shadow-inner" placeholder="Ex: A hostile state actor attempts to decrypt our RSA-2048 key vault using a new quantum algorithm..."></textarea>
-                        
                         <button onclick="runGeminiAnalysis()" id="run-btn" class="mt-4 w-full py-3 bg-slate-900 border border-slate-900 text-white font-mono text-sm rounded-md hover:bg-primary hover:border-primary transition-all flex items-center justify-center gap-2 group shadow-lg shadow-slate-200">
                             <span class="group-hover:text-white transition-colors font-bold">INITIALIZE ANALYSIS ✨</span>
                         </button>
                     </div>
-
-                    <!-- Status -->
                     <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 font-medium">
                         <span>LATENCY: <span class="text-primary">12ms</span></span>
                         <span>MODEL: GEMINI-2.5-FLASH</span>
                     </div>
                 </div>
-
-                <!-- Output Terminal - Remains Dark for Contrast -->
                 <div class="lg:col-span-3 reveal-on-scroll delay-200">
                     <div class="h-full min-h-[500px] bg-[#1e293b] rounded-xl border border-slate-700 p-6 font-mono text-sm relative overflow-hidden shadow-2xl shadow-slate-200">
-                        <!-- Terminal Header -->
                         <div class="flex items-center justify-between mb-4 border-b border-slate-700 pb-2">
                             <div class="flex gap-2">
-                                <!-- Updated to Browns/Ambers per request -->
                                 <div class="w-3 h-3 rounded-full bg-warning"></div>
                                 <div class="w-3 h-3 rounded-full bg-yellow-600"></div>
                                 <div class="w-3 h-3 rounded-full bg-primary"></div>
                             </div>
                             <span class="text-slate-400 text-xs">/bin/dacn_sentinel</span>
                         </div>
-
-                        <!-- Terminal Content -->
                         <div id="terminal-output" class="space-y-4 text-slate-300 h-[420px] overflow-y-auto pr-2 custom-scrollbar">
                             <div class="text-slate-400">DACN SENTINEL SYSTEM v4.0.2 initialized...</div>
                             <div class="text-slate-400">Waiting for input vector...</div>
@@ -423,9 +442,12 @@
     <!-- SECTION 4: MODULES -->
     <section id="tech" class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tighter pb-2">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Our Core</span>
+                </h2>
+            </div>
             <div class="grid md:grid-cols-3 gap-6">
-                
-                <!-- Module 1 -->
                 <div class="glass-panel p-6 hover:border-primary/50 transition-all duration-500 group cursor-crosshair hover:-translate-y-2 reveal-on-scroll delay-100 bg-white">
                     <div class="text-xs font-mono text-slate-400 mb-4 font-bold">MODULE 01</div>
                     <div class="w-12 h-12 rounded bg-slate-100 flex items-center justify-center mb-6 text-primary group-hover:text-white group-hover:bg-primary transition-colors">
@@ -436,8 +458,6 @@
                     <div class="h-px w-full bg-slate-100 mb-4"></div>
                     <div class="font-mono text-[10px] text-slate-400 group-hover:text-primary font-bold">STATUS: ACTIVE</div>
                 </div>
-
-                <!-- Module 2 -->
                 <div class="glass-panel p-6 hover:border-primary/50 transition-all duration-500 group cursor-crosshair hover:-translate-y-2 reveal-on-scroll delay-200 bg-white">
                     <div class="text-xs font-mono text-slate-400 mb-4 font-bold">MODULE 02</div>
                     <div class="w-12 h-12 rounded bg-slate-100 flex items-center justify-center mb-6 text-primary group-hover:text-white group-hover:bg-primary transition-colors">
@@ -448,8 +468,6 @@
                     <div class="h-px w-full bg-slate-100 mb-4"></div>
                     <div class="font-mono text-[10px] text-slate-400 group-hover:text-primary font-bold">STATUS: STANDBY</div>
                 </div>
-
-                <!-- Module 3 -->
                 <div class="glass-panel p-6 hover:border-primary/50 transition-all duration-500 group cursor-crosshair hover:-translate-y-2 reveal-on-scroll delay-300 bg-white">
                     <div class="text-xs font-mono text-slate-400 mb-4 font-bold">MODULE 03</div>
                     <div class="w-12 h-12 rounded bg-slate-100 flex items-center justify-center mb-6 text-primary group-hover:text-white group-hover:bg-primary transition-colors">
@@ -460,7 +478,6 @@
                     <div class="h-px w-full bg-slate-100 mb-4"></div>
                     <div class="font-mono text-[10px] text-slate-400 group-hover:text-primary font-bold">STATUS: CONNECTED</div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -469,41 +486,117 @@
     <section class="py-24 relative overflow-hidden">
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-on-scroll">
-                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Custody Pipeline</h2>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tighter pb-2">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Custody Pipeline</span>
+                </h2>
             </div>
-
             <div class="relative reveal-on-scroll delay-200">
-                <!-- Connecting Line (Desktop) -->
                 <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -z-10 transform -translate-y-1/2"></div>
-
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <!-- Step 1 -->
-                    <div class="bg-white border border-slate-200 p-6 rounded-xl relative hover:-translate-y-2 transition-transform duration-300 shadow-sm">
-                        <div class="w-10 h-10 bg-slate-900 rounded-full flex items-center justify-center text-white font-bold mb-4 border-4 border-white shadow-md mx-auto md:mx-0">1</div>
-                        <h4 class="text-lg font-bold text-slate-900 mb-2 text-center md:text-left">Verify Air-Gap</h4>
+                    <div class="group bg-white border border-slate-200 p-6 rounded-xl relative hover:-translate-y-2 transition-transform duration-300 shadow-sm cursor-default">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 font-bold mb-4 border-4 border-slate-100 shadow-md mx-auto md:mx-0 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-[#1fa85b] group-hover:to-primary group-hover:animate-gradient-x transition-all">1</div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2 text-center md:text-left group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-[#1fa85b] group-hover:to-primary group-hover:animate-gradient-x transition-all">Verify Air-Gap</h4>
                         <p class="text-xs text-slate-500 text-center md:text-left font-medium">Physical isolation of signing hardware from all networks.</p>
                     </div>
-
-                    <!-- Step 2 -->
-                    <div class="bg-white border border-slate-200 p-6 rounded-xl relative hover:-translate-y-2 transition-transform duration-300 shadow-sm">
-                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 font-bold mb-4 border-4 border-slate-100 shadow-md mx-auto md:mx-0">2</div>
-                        <h4 class="text-lg font-bold text-slate-900 mb-2 text-center md:text-left">Generate Keys</h4>
+                    <div class="group bg-white border border-slate-200 p-6 rounded-xl relative hover:-translate-y-2 transition-transform duration-300 shadow-sm cursor-default">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 font-bold mb-4 border-4 border-slate-100 shadow-md mx-auto md:mx-0 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-[#1fa85b] group-hover:to-primary group-hover:animate-gradient-x transition-all">2</div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2 text-center md:text-left group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-[#1fa85b] group-hover:to-primary group-hover:animate-gradient-x transition-all">Generate Keys</h4>
                         <p class="text-xs text-slate-500 text-center md:text-left font-medium">Creation of true random entropy waveforms.</p>
                     </div>
-
-                    <!-- Step 3 -->
-                    <div class="bg-white border border-slate-200 p-6 rounded-xl relative hover:-translate-y-2 transition-transform duration-300 shadow-sm">
-                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 font-bold mb-4 border-4 border-slate-100 shadow-md mx-auto md:mx-0">3</div>
-                        <h4 class="text-lg font-bold text-slate-900 mb-2 text-center md:text-left">Split Shards</h4>
+                    <div class="group bg-white border border-slate-200 p-6 rounded-xl relative hover:-translate-y-2 transition-transform duration-300 shadow-sm cursor-default">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 font-bold mb-4 border-4 border-slate-100 shadow-md mx-auto md:mx-0 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-[#1fa85b] group-hover:to-primary group-hover:animate-gradient-x transition-all">3</div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2 text-center md:text-left group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-[#1fa85b] group-hover:to-primary group-hover:animate-gradient-x transition-all">Split Shards</h4>
                         <p class="text-xs text-slate-500 text-center md:text-left font-medium">Shamir's Secret Sharing distribution.</p>
                     </div>
-
-                    <!-- Step 4 -->
-                    <div class="bg-white border border-slate-200 p-6 rounded-xl relative hover:-translate-y-2 transition-transform duration-300 shadow-sm">
-                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 font-bold mb-4 border-4 border-slate-100 shadow-md mx-auto md:mx-0">4</div>
-                        <h4 class="text-lg font-bold text-slate-900 mb-2 text-center md:text-left">Distribute</h4>
+                    <div class="group bg-white border border-slate-200 p-6 rounded-xl relative hover:-translate-y-2 transition-transform duration-300 shadow-sm cursor-default">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-900 font-bold mb-4 border-4 border-slate-100 shadow-md mx-auto md:mx-0 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-[#1fa85b] group-hover:to-primary group-hover:animate-gradient-x transition-all">4</div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2 text-center md:text-left group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:via-[#1fa85b] group-hover:to-primary group-hover:animate-gradient-x transition-all">Distribute</h4>
                         <p class="text-xs text-slate-500 text-center md:text-left font-medium">Generate physical Custody Note Artifacts.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5.2: BENTO COMPARISON GRID -->
+    <section class="py-24 bg-white border-t border-slate-200 relative">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tighter pb-2">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">The Sovereign Advantage</span>
+                </h2>
+                <p class="mt-4 text-slate-500 max-w-2xl mx-auto">Why sovereign institutions are migrating from legacy MPC providers to DACN AirGuard.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 reveal-on-scroll delay-100">
+                <div class="md:col-span-8 bg-slate-50 border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-10 -mt-10 transition-transform group-hover:scale-110"></div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Security Architecture Comparison
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left min-w-[500px]">
+                            <thead class="text-xs text-slate-400 uppercase font-mono border-b border-slate-200">
+                                <tr>
+                                    <th class="py-3 px-4 font-semibold">Feature</th>
+                                    <th class="py-3 px-4 font-bold text-primary bg-primary/5 rounded-t-lg">DACN AirGuard</th>
+                                    <th class="py-3 px-4 font-medium text-slate-500">Fireblocks / BitGo</th>
+                                    <th class="py-3 px-4 font-medium text-slate-500">Coinbase Custody</th>
+                                </tr>
+                            </thead>
+                            <tbody class="font-medium text-slate-700">
+                                <tr class="border-b border-slate-100 hover:bg-white transition-colors"><td class="py-4 px-4">Cryptography</td><td class="py-4 px-4 bg-primary/5 font-bold text-primary">Post-Quantum (Lattice)</td><td class="py-4 px-4 text-slate-500">Standard ECC/RSA</td><td class="py-4 px-4 text-slate-500">Standard ECC/RSA</td></tr>
+                                <tr class="border-b border-slate-100 hover:bg-white transition-colors"><td class="py-4 px-4">Key Generation</td><td class="py-4 px-4 bg-primary/5 font-bold text-primary">Air-Gapped Hardware</td><td class="py-4 px-4 text-slate-500">Online / Hot MPC</td><td class="py-4 px-4 text-slate-500">Mixed Cold/Hot</td></tr>
+                                <tr class="border-b border-slate-100 hover:bg-white transition-colors"><td class="py-4 px-4">Privacy Tech</td><td class="py-4 px-4 bg-primary/5 font-bold text-primary">ZK-Proof Solvency</td><td class="py-4 px-4 text-slate-500">Standard Ledger</td><td class="py-4 px-4 text-slate-500">Standard Ledger</td></tr>
+                                <tr class="hover:bg-white transition-colors"><td class="py-4 px-4">Deployment</td><td class="py-4 px-4 bg-primary/5 font-bold text-primary rounded-b-lg">Self-Hosted / On-Prem</td><td class="py-4 px-4 text-slate-500">SaaS / Cloud</td><td class="py-4 px-4 text-slate-500">Custodial (They hold it)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="md:col-span-4 bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl relative overflow-hidden flex flex-col justify-between group">
+                    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMTAxODE3Ii8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMzMzQxNTUiLz4KPC9zdmc+')] opacity-20"></div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-gradient-to-r from-transparent via-primary/20 to-transparent rotate-45 animate-pulse-slow blur-3xl pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center gap-2 px-2 py-1 rounded border border-warning/30 bg-warning/10 text-warning text-[10px] font-mono mb-4"><span class="w-1.5 h-1.5 rounded-full bg-warning animate-blink"></span> THREAT DETECTED</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Harvest Now,<br>Decrypt Later.</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Legacy providers are vulnerable to HNDL attacks. Encrypted data stolen today will be decrypted by quantum computers tomorrow.</p>
+                    </div>
+                    <div class="relative z-10 mt-8">
+                        <div class="w-full bg-slate-800 rounded-full h-1.5 mb-2 overflow-hidden"><div class="bg-primary h-1.5 rounded-full w-full animate-[loading_2s_ease-in-out_infinite]"></div></div>
+                        <p class="text-[10px] font-mono text-primary text-right">DACN SHIELD: ACTIVE</p>
+                    </div>
+                </div>
+                <div class="md:col-span-4 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:border-primary/50 transition-all group">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors text-slate-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">Zero-Knowledge Proofs</h4>
+                    <p class="text-sm text-slate-500">Prove solvency and ownership without revealing balances or wallet addresses to the public network.</p>
+                </div>
+                <div class="md:col-span-4 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:border-primary/50 transition-all group">
+                    <div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors text-slate-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">DeFi Native</h4>
+                    <p class="text-sm text-slate-500">Direct integration with Aave, Compound, and Uniswap via our institutional firewall gateway.</p>
+                </div>
+                <div class="md:col-span-4 bg-gradient-to-br from-primary to-[#0f3d22] rounded-2xl p-8 shadow-lg text-white flex flex-col justify-center items-start group relative overflow-hidden">
+                    <div class="absolute right-0 bottom-0 opacity-10 transform translate-x-8 translate-y-8 group-hover:scale-110 transition-transform">
+                        <svg width="180" height="180" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white">
+                            <path d="M12 22C16.97 21.5 20 16.97 20 12V6L12 2L4 6V12C4 16.97 7.03 21.5 12 22Z" fill="currentColor"/>
+                            <ellipse cx="12" cy="11.5" rx="5.5" ry="2" transform="rotate(45 12 11.5)" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.8"/>
+                            <ellipse cx="12" cy="11.5" rx="5.5" ry="2" transform="rotate(-45 12 11.5)" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.8"/>
+                            <ellipse cx="12" cy="11.5" rx="5.5" ry="2" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.8"/>
+                            <circle cx="12" cy="11.5" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 relative z-10">Ready to upgrade?</h3>
+                    <p class="text-emerald-100 text-sm mb-6 max-w-[80%] relative z-10">Migrate your keys to a sovereign, post-quantum environment today.</p>
+                    <button class="relative z-10 group/btn px-6 py-2.5 rounded bg-white text-primary font-bold text-sm hover:bg-emerald-50 transition-colors shadow-md overflow-hidden min-w-[140px] flex items-center justify-center">
+                        <span class="absolute inset-0 flex items-center justify-center transition-all duration-300 group-hover/btn:opacity-0 group-hover/btn:-translate-y-2 gap-2 w-full h-full">Get Started <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></span>
+                        <span class="absolute inset-0 flex items-center justify-center transition-all duration-300 opacity-0 translate-y-2 group-hover/btn:opacity-100 group-hover/btn:translate-y-0 font-bold text-xs tracking-widest w-full h-full">COMING SOON</span>
+                        <span class="invisible flex items-center gap-2">Get Started <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -518,17 +611,21 @@
                         <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/></svg>
                         CROSS-CHAIN INTEROPERABILITY
                     </div>
-                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Chain Agnostic <span class="text-slate-400">Infrastructure</span></h2>
+                    <h2 class="text-3xl font-bold tracking-tight">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Chain Agnostic</span> 
+                        <span class="text-slate-400">Infrastructure</span>
+                    </h2>
                     <p class="mt-4 text-slate-600 max-w-xl leading-relaxed">
-                        Our custody architecture utilizes <span class="text-primary font-bold">Chainlink CCIP</span> for secure, arbitrary messaging across public and private chains, ensuring seamless asset mobility for sovereign institutions.
+                        Our custody architecture utilizes <span class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Chainlink CCIP</span> for secure, arbitrary messaging across public and private chains, ensuring seamless asset mobility for sovereign institutions.
                     </p>
                 </div>
                 <div class="mt-6 md:mt-0 flex flex-col items-end">
                     <span class="text-xs font-mono text-slate-400 uppercase font-bold tracking-wide mb-2">Secured By</span>
-                    <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded border border-slate-200 shadow-sm">
+                    <a href="https://chain.link/cross-chain" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-white px-3 py-1.5 rounded border border-slate-200 shadow-sm hover:border-primary/50 transition-colors group">
                         <svg class="w-5 h-5 text-[#375BD2]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 21.6c-5.302 0-9.6-4.298-9.6-9.6s4.298-9.6 9.6-9.6 9.6 4.298 9.6 9.6-4.298 9.6-9.6 9.6zm-2.4-14.4l-4.8 4.8 4.8 4.8 1.697-1.697-3.103-3.103 3.103-3.103-1.697-1.697zm4.8 0l-1.697 1.697 3.103 3.103-3.103 3.103 1.697 1.697 4.8-4.8-4.8-4.8z"/></svg>
-                        <span class="font-bold text-slate-800 text-sm">CCIP</span>
-                    </div>
+                        <span class="font-bold text-slate-800 text-sm group-hover:text-primary transition-colors">CCIP</span>
+                        <svg class="w-3 h-3 text-slate-400 group-hover:text-primary transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
                 </div>
             </div>
 
@@ -542,56 +639,41 @@
                     <!-- === SET 1 === -->
                     <!-- BITCOIN -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <!-- Real BTC Logo -->
-                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#F7931A"><path d="M23.638 14.904c-1.602 6.43-8.113 10.34-14.542 8.736C2.67 22.05-1.244 15.525.362 9.105 1.962 2.67 8.475-1.24 14.9.358c6.43 1.605 10.342 8.115 8.738 14.548v-.002zm-4.208-6.308c.16-1.077-.44-1.655-1.188-2.04l2.44-9.78-3.996.998-2.406 9.625c-.653-.163-1.33-.31-2.004-.45l2.443-9.79-4.004.997-2.415 9.66c-.535-.123-1.074-.242-1.59-.36l-3.44 1.377.852 2.127s2.372-.57 2.363-.54c1.174-.293 1.734.162 2.01.69l-2.014 8.065c-.12.303-.43.757-1.115.59l-2.37-.59.876 2.245 3.245.81c.612.153 1.21.312 1.81.47l-2.47 9.89 3.993-.997 2.443-9.77c.68.186 1.34.36 1.984.52l-2.452 9.816 4.004-.998 2.47-9.883c1.69.32 2.967.19 3.516-1.345.442-1.235.022-1.95-.915-2.416.65-.15 1.14-.578 1.273-1.458.913-2.546-2.358-2.76-4.768-2.183zm-2.838 3.972c-.383 1.532-2.968.704-3.808.495l.68-2.72c.84.21 3.468.634 3.128 2.225zm.385-3.97c-.35 1.4-2.51.69-3.21.516l.616-2.47c.7.175 2.903.524 2.594 1.952z"/></svg>
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#F7931A"><path d="M16.125 10.063c.5-.125.813-.5.75-1-.063-.438-.5-.75-1.063-.625l-2.625.688.625-2.625-1.5-.375-.625 2.625-1.375.313.625-2.625-1.563-.375-.563 2.625c-.375-.063-.813-.188-1.25-.313l-2.063-.5-.5 1.938s1.375.313 1.313.375c.75.188.875.688.875.688l-1.375 5.688c.063.125.188.25.313.188l-1.375 5.625c0 0-.25.125-.875-.063-.063.063-1.375-.313-1.375-.313l-.938 2.125 1.938.5c.375.063.75.188 1.125.25l-.625 2.688 1.5.375.625-2.625 1.375.375-.688 2.625 1.5.375.688-2.625 2.75.688c.5.125 1 .188 1.313.188 2.063 0 3.625-1.063 3.688-3.75 0-1.25-.063-2.188-.813-2.875.625-.188 1.063-.625 1.188-1.563.188-1.25-.25-2.188-1.563-2.5zm-2.375 6.375c0 1.938-3.375.875-4.313.688l.813-3.25c.938.25 4.375.688 3.5 2.563zm.5-4.375c0 1.75-3 .875-3.813.688l.75-3.063c.813.188 3.813.563 3.063 2.375z"/></svg>
                         <span class="font-bold text-slate-700">Bitcoin</span>
                     </div>
-                    
                     <!-- ETHEREUM -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <!-- Real ETH Logo -->
                         <svg class="w-8 h-8" viewBox="0 0 32 32" fill="currentColor" color="#627EEA"><path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm7.994-15.781L16.498 4 9 16.22l7.498 4.353 7.496-4.354zM24 17.616l-7.502 4.351L9 17.617l7.498 10.378L24 17.616z"/></svg>
                         <span class="font-bold text-slate-700">Ethereum</span>
                     </div>
-
                     <!-- SOLANA -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <!-- Real Solana Logo -->
-                        <svg class="w-8 h-8" viewBox="0 0 32 32" fill="currentColor" color="#00FFA3"><path d="M5.165 12.628l-1.954-1.978 17.495-5.403-15.54 10.737zm17.21 6.345l1.954 1.978L6.835 26.354l15.54-10.737zM24.282 4.606l1.954 1.978L8.74 11.986l15.54-10.737z"/></svg>
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#00FFA3"><path d="M19.78 6.576H1.944l2.227-3.774h17.84zM22.056 11.424H4.22l-2.227 3.774h17.84zM19.78 19.95H1.944l2.227-3.774h17.84z"/></svg>
                          <span class="font-bold text-slate-700">Solana</span>
                     </div>
-                    
-                    <!-- OPTIMISM (OP STACK) -->
+                    <!-- OPTIMISM -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                         <!-- Real OP Logo -->
                          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#FF0420"><path d="M13.55 17.26c-3.49 0-6.32-2.83-6.32-6.32 0-3.49 2.83-6.32 6.32-6.32 3.49 0 6.32 2.83 6.32 6.32 0 3.49-2.83 6.32-6.32 6.32zm0-17.26C7.56 0 2.7 4.86 2.7 10.85c0 3.43 1.61 6.49 4.13 8.45L2.22 24l8.34-3.77c.96.19 1.96.3 2.99.3 5.99 0 10.85-4.86 10.85-10.85S19.54 0 13.55 0z"/></svg>
                         <span class="font-bold text-slate-700">Optimism</span>
                     </div>
-
                     <!-- ARBITRUM -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                         <!-- Real Arbitrum Logo -->
                          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#2D374B"><path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z" fill="#2D374B"/><path d="M12.028 5.255L6.717 14.544l2.33.012 2.995-5.277 2.968 5.273h2.35L12.028 5.255z" fill="#fff"/><path d="M9.057 14.556l-2.34-.012 3.32 6.01 2.603-4.535-3.583-1.463z" fill="#96A0B5"/></svg>
                         <span class="font-bold text-slate-700">Arbitrum</span>
                     </div>
-                    
-                     <!-- ZKSYNC -->
+                    <!-- ZKSYNC -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                         <!-- Real zkSync Logo -->
                          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#000000"><path d="M20.2 5H3.8C2.8 5 2 5.8 2 6.8V17.2C2 18.2 2.8 19 3.8 19H20.2C21.2 19 22 18.2 22 17.2V6.8C22 5.8 21.2 5 20.2 5ZM9.6 14.7L7.8 12.9C7.6 12.7 7.6 12.4 7.8 12.2L9.6 10.4C9.8 10.2 10.1 10.2 10.3 10.4L12.1 12.2C12.3 12.4 12.3 12.7 12.1 12.9L10.3 14.7C10.1 14.9 9.8 14.9 9.6 14.7ZM16.4 14.7L14.6 12.9C14.4 12.7 14.4 12.4 14.6 12.2L16.4 10.4C16.6 10.2 16.9 10.2 17.1 10.4L18.9 12.2C19.1 12.4 19.1 12.7 18.9 12.9L17.1 14.7C16.9 14.9 16.6 14.9 16.4 14.7Z"/></svg>
                         <span class="font-bold text-slate-700">zkSync</span>
                     </div>
-
                     <!-- POLYGON -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <!-- Real Polygon Logo -->
                         <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#8247E5"><path d="M16.5 10.5l-2.25-1.3-2.25 1.3v2.6l2.25 1.3 2.25-1.3v-2.6zM12 15.7l-2.25-1.3v-2.6l-2.25-1.3-2.25 1.3v2.6l2.25 1.3 2.25-1.3v-2.6l2.25 1.3V15.7zM12 8.3l2.25 1.3v2.6l2.25 1.3 2.25-1.3V9.7l-2.25-1.3-2.25 1.3V7.1L12 8.3zM12 3L3 8.2v10.4l9 5.2 9-5.2V8.2L12 3z"/></svg>
                         <span class="font-bold text-slate-700">Polygon</span>
                     </div>
-                    
                     <!-- AVALANCHE -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <!-- Real Avalanche Logo -->
                         <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#E84142"><path d="M12 0L0 21.6h24L12 0zm0 2.7l9.5 16.2H2.5L12 2.7zM5.7 16.6l3.1-5.5 6.2 11H8.8l-3.1-5.5z"/></svg>
                         <span class="font-bold text-slate-700">Avalanche</span>
                     </div>
@@ -599,50 +681,69 @@
                     <!-- === SET 2 (DUPLICATE FOR INFINITE LOOP) === -->
                     <!-- BITCOIN -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#F7931A"><path d="M23.638 14.904c-1.602 6.43-8.113 10.34-14.542 8.736C2.67 22.05-1.244 15.525.362 9.105 1.962 2.67 8.475-1.24 14.9.358c6.43 1.605 10.342 8.115 8.738 14.548v-.002zm-4.208-6.308c.16-1.077-.44-1.655-1.188-2.04l2.44-9.78-3.996.998-2.406 9.625c-.653-.163-1.33-.31-2.004-.45l2.443-9.79-4.004.997-2.415 9.66c-.535-.123-1.074-.242-1.59-.36l-3.44 1.377.852 2.127s2.372-.57 2.363-.54c1.174-.293 1.734.162 2.01.69l-2.014 8.065c-.12.303-.43.757-1.115.59l-2.37-.59.876 2.245 3.245.81c.612.153 1.21.312 1.81.47l-2.47 9.89 3.993-.997 2.443-9.77c.68.186 1.34.36 1.984.52l-2.452 9.816 4.004-.998 2.47-9.883c1.69.32 2.967.19 3.516-1.345.442-1.235.022-1.95-.915-2.416.65-.15 1.14-.578 1.273-1.458.913-2.546-2.358-2.76-4.768-2.183zm-2.838 3.972c-.383 1.532-2.968.704-3.808.495l.68-2.72c.84.21 3.468.634 3.128 2.225zm.385-3.97c-.35 1.4-2.51.69-3.21.516l.616-2.47c.7.175 2.903.524 2.594 1.952z"/></svg>
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#F7931A"><path d="M16.125 10.063c.5-.125.813-.5.75-1-.063-.438-.5-.75-1.063-.625l-2.625.688.625-2.625-1.5-.375-.625 2.625-1.375.313.625-2.625-1.563-.375-.563 2.625c-.375-.063-.813-.188-1.25-.313l-2.063-.5-.5 1.938s1.375.313 1.313.375c.75.188.875.688.875.688l-1.375 5.688c.063.125.188.25.313.188l-1.375 5.625c0 0-.25.125-.875-.063-.063.063-1.375-.313-1.375-.313l-.938 2.125 1.938.5c.375.063.75.188 1.125.25l-.625 2.688 1.5.375.625-2.625 1.375.375-.688 2.625 1.5.375.688-2.625 2.75.688c.5.125 1 .188 1.313.188 2.063 0 3.625-1.063 3.688-3.75 0-1.25-.063-2.188-.813-2.875.625-.188 1.063-.625 1.188-1.563.188-1.25-.25-2.188-1.563-2.5zm-2.375 6.375c0 1.938-3.375.875-4.313.688l.813-3.25c.938.25 4.375.688 3.5 2.563zm.5-4.375c0 1.75-3 .875-3.813.688l.75-3.063c.813.188 3.813.563 3.063 2.375z"/></svg>
                         <span class="font-bold text-slate-700">Bitcoin</span>
                     </div>
-                    
                     <!-- ETHEREUM -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
                         <svg class="w-8 h-8" viewBox="0 0 32 32" fill="currentColor" color="#627EEA"><path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm7.994-15.781L16.498 4 9 16.22l7.498 4.353 7.496-4.354zM24 17.616l-7.502 4.351L9 17.617l7.498 10.378L24 17.616z"/></svg>
                         <span class="font-bold text-slate-700">Ethereum</span>
                     </div>
-
                     <!-- SOLANA -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
-                        <svg class="w-8 h-8" viewBox="0 0 32 32" fill="currentColor" color="#00FFA3"><path d="M5.165 12.628l-1.954-1.978 17.495-5.403-15.54 10.737zm17.21 6.345l1.954 1.978L6.835 26.354l15.54-10.737zM24.282 4.606l1.954 1.978L8.74 11.986l15.54-10.737z"/></svg>
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#00FFA3"><path d="M19.78 6.576H1.944l2.227-3.774h17.84zM22.056 11.424H4.22l-2.227 3.774h17.84zM19.78 19.95H1.944l2.227-3.774h17.84z"/></svg>
                          <span class="font-bold text-slate-700">Solana</span>
                     </div>
-                    
                     <!-- OPTIMISM -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
                          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#FF0420"><path d="M13.55 17.26c-3.49 0-6.32-2.83-6.32-6.32 0-3.49 2.83-6.32 6.32-6.32 3.49 0 6.32 2.83 6.32 6.32 0 3.49-2.83 6.32-6.32 6.32zm0-17.26C7.56 0 2.7 4.86 2.7 10.85c0 3.43 1.61 6.49 4.13 8.45L2.22 24l8.34-3.77c.96.19 1.96.3 2.99.3 5.99 0 10.85-4.86 10.85-10.85S19.54 0 13.55 0z"/></svg>
                         <span class="font-bold text-slate-700">Optimism</span>
                     </div>
-
                     <!-- ARBITRUM -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
                          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#2D374B"><path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z" fill="#2D374B"/><path d="M12.028 5.255L6.717 14.544l2.33.012 2.995-5.277 2.968 5.273h2.35L12.028 5.255z" fill="#fff"/><path d="M9.057 14.556l-2.34-.012 3.32 6.01 2.603-4.535-3.583-1.463z" fill="#96A0B5"/></svg>
                         <span class="font-bold text-slate-700">Arbitrum</span>
                     </div>
-                    
-                     <!-- ZKSYNC -->
+                    <!-- ZKSYNC -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
                          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#000000"><path d="M20.2 5H3.8C2.8 5 2 5.8 2 6.8V17.2C2 18.2 2.8 19 3.8 19H20.2C21.2 19 22 18.2 22 17.2V6.8C22 5.8 21.2 5 20.2 5ZM9.6 14.7L7.8 12.9C7.6 12.7 7.6 12.4 7.8 12.2L9.6 10.4C9.8 10.2 10.1 10.2 10.3 10.4L12.1 12.2C12.3 12.4 12.3 12.7 12.1 12.9L10.3 14.7C10.1 14.9 9.8 14.9 9.6 14.7ZM16.4 14.7L14.6 12.9C14.4 12.7 14.4 12.4 14.6 12.2L16.4 10.4C16.6 10.2 16.9 10.2 17.1 10.4L18.9 12.2C19.1 12.4 19.1 12.7 18.9 12.9L17.1 14.7C16.9 14.9 16.6 14.9 16.4 14.7Z"/></svg>
                         <span class="font-bold text-slate-700">zkSync</span>
                     </div>
-
                     <!-- POLYGON -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
                         <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#8247E5"><path d="M16.5 10.5l-2.25-1.3-2.25 1.3v2.6l2.25 1.3 2.25-1.3v-2.6zM12 15.7l-2.25-1.3v-2.6l-2.25-1.3-2.25 1.3v2.6l2.25 1.3 2.25-1.3v-2.6l2.25 1.3V15.7zM12 8.3l2.25 1.3v2.6l2.25 1.3 2.25-1.3V9.7l-2.25-1.3-2.25 1.3V7.1L12 8.3zM12 3L3 8.2v10.4l9 5.2 9-5.2V8.2L12 3z"/></svg>
                         <span class="font-bold text-slate-700">Polygon</span>
                     </div>
-                    
                     <!-- AVALANCHE -->
                     <div class="flex items-center gap-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all cursor-pointer">
                         <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" color="#E84142"><path d="M12 0L0 21.6h24L12 0zm0 2.7l9.5 16.2H2.5L12 2.7zM5.7 16.6l3.1-5.5 6.2 11H8.8l-3.1-5.5z"/></svg>
                         <span class="font-bold text-slate-700">Avalanche</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5.8: COMMUNITY CARD (Centered) -->
+    <section class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center reveal-on-scroll">
+                <div class="w-full max-w-3xl bg-white border border-slate-200 rounded-2xl p-12 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-bl-full -mr-16 -mt-16 pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-tr-full -ml-10 -mb-10 pointer-events-none"></div>
+                    <h3 class="text-3xl md:text-4xl font-bold tracking-tight mb-8 leading-tight">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Stay Updated on the Quantum Future</span>
+                    </h3>
+                    <div class="flex gap-6 mt-4">
+                        <a href="#" class="group p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
+                            <svg class="w-8 h-8 text-slate-400 group-hover:text-primary transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="#" class="group p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
+                            <svg class="w-8 h-8 text-slate-400 group-hover:text-primary transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="#" class="group p-4 rounded-xl bg-slate-50 border border-slate-100 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300">
+                            <svg class="w-8 h-8 text-slate-400 group-hover:text-primary transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -654,14 +755,11 @@
         <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <div class="col-span-2">
-                    <h5 class="text-slate-900 font-bold mb-4">DACN AirGuard</h5>
-                    <p class="text-slate-500 text-sm max-w-sm font-medium">
-                        The definitive infrastructure for institutional digital asset sovereignty. <br>
-                        <span class="text-slate-900 font-bold">Engineered in the USA.</span>
-                    </p>
+                    <h5 class="font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">DACN AirGuard</h5>
+                    <p class="text-slate-500 text-sm max-w-sm font-medium">The definitive infrastructure for institutional digital asset sovereignty. <br><span class="font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Engineered in the USA.</span></p>
                 </div>
                 <div>
-                    <h6 class="text-slate-900 font-mono text-xs mb-4 uppercase font-bold">Standards</h6>
+                    <h6 class="font-mono text-xs mb-4 uppercase font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Standards</h6>
                     <ul class="space-y-2 text-sm text-slate-500 font-medium">
                         <li>ISO 27001</li>
                         <li>SOC 2 Type II</li>
@@ -669,7 +767,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h6 class="text-slate-900 font-mono text-xs mb-4 uppercase font-bold">Regulators</h6>
+                    <h6 class="font-mono text-xs mb-4 uppercase font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#1fa85b] to-primary animate-gradient-x">Regulators</h6>
                     <ul class="space-y-2 text-sm text-slate-500 font-medium">
                         <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary"></span> SEC Qualified</li>
                         <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary"></span> CFTC Reporting</li>
@@ -677,14 +775,9 @@
                     </ul>
                 </div>
             </div>
-            
             <div class="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <div class="text-xs text-slate-400 font-mono font-medium">
-                    &copy; 2025 DACN Systems US, Inc. All rights reserved.
-                </div>
-                <div class="text-xs text-slate-400 font-mono mt-2 md:mt-0 font-medium">
-                    Aligned with OCC Bulletin 2025-17
-                </div>
+                <div class="text-xs text-slate-400 font-mono font-medium">&copy; 2025 DACN Systems US, Inc. All rights reserved.</div>
+                <div class="text-xs text-slate-400 font-mono mt-2 md:mt-0 font-medium">Aligned with OCC Bulletin 2025-17</div>
             </div>
         </div>
     </footer>
@@ -857,6 +950,14 @@
             const y = (window.innerHeight - e.pageY) / 50;
             const heroVisual = document.querySelector('.perspective-1000');
             if(heroVisual) heroVisual.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+
+        // 5. MOBILE MENU LOGIC
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
     </script>
